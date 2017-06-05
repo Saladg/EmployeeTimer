@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-img img src="assets/imgs/logo.png" width="100%" height="25%"> </ion-img><br><br>
+  <!--*ngIf="employees !=0"-->
+  <!--<ion-spinner name="circles" *ngIf="employees == 0"></ion-spinner>-->
+
+  <h3>{{ today | date:'medium' }} </h3><br>
+
+  <select #selected>
+<option value="">Choose your details here..</option>
+
+<option *ngFor="let employee of employees; let i = employee" [value]="employee.employee_id">
+
+      {{employee.employee_id}}: {{employee.first_name}} {{employee.last_name}}
+
+</option>
+
+</select><br><br><br><br>
+
+  <form>
+    <h3>
+      <button ion-button (click)="onCheckIn(selected.value)"><ion-icon name="person"></ion-icon>&nbsp;&nbsp;Check-In</button>
+      <button ion-button (click) ="onCheckOut(selected.value)"><ion-icon name="person"></ion-icon>&nbsp;&nbsp;Check-Out</button>
+    </h3>
+  </form>
+  <br>
+  <button ion-button full (click)="logData()">Log data</button>
+</ion-content>

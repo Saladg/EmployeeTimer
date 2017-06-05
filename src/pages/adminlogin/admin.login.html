@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-buttons (click)="onHome()" id="btnHome"><ion-icon name="arrow-back">&nbsp;Back</ion-icon>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button> Login
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <br><br>
+  <div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmitAdmin()">
+      <div class="form-group">
+        <ion-item>
+          <ion-input type="text" class="form-control" formControlName="username" placeholder="Enter username(admin)"></ion-input>
+          <ion-icon name="person" item-left></ion-icon>
+        </ion-item>
+      </div>
+      <br>
+      <div class="form-group">
+        <ion-item>
+          <ion-input type="password" class="form-control" formControlName="password" placeholder="Enter password(pass)"></ion-input>
+          <ion-icon name="key" item-left></ion-icon>
+        </ion-item>
+      </div>
+      <br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button ion-button type="submit" [disabled]="!myForm.valid"><ion-icon name="person"></ion-icon>&nbsp;&nbsp;&nbsp;Admin-login</button>
+
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Admin
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addEmployee()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <br>
+  <h3>{{today | date:'medium'}}</h3><br>
+
+  <ion-list>
+
+    <ion-item *ngFor="let emp of allEmployees" (click)="showOptions(emp.employee_id, emp.first_name, emp.last_name)">
+
+      {{emp.employee_id}}: {{emp.first_name}} {{emp.last_name}}
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>

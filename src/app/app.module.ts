@@ -1,49 +1,58 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import {NgModule, ErrorHandler } from '@angular/core';
+import {BrowserModule } from '@angular/platform-browser';
+import {HttpModule } from '@angular/http';
+import {IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { TabsPage } from '../pages/tabs/tabs';
-import {LoginPage} from '../pages/login/login';
-import { HomePage } from '../pages/home/home';
-import {SignInPage} from '../pages/logs/logs.signin';
-import {SignOutPage} from '../pages/logs/logs.signout';
+import {IonicStorageModule } from '@ionic/storage';
+import {MyApp} from './app.component';
+import {AdminLoginPage} from '../pages/adminlogin/admin.login';
+import {RegisterPage} from '../pages/register/register';
+import {AdminHomePage} from '../pages/adminhome/admin.home';
+import {AuthService} from '../sprovider/authservice';
+import {EmployeesService} from '../sprovider/empservice';
+import {StatusBar } from '@ionic-native/status-bar';
+import {SplashScreen } from '@ionic-native/splash-screen';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+/*// Import the AF2 Module
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
+
+
+// AF2 Settings
+export const firebaseConfig = {
+
+};
+*/
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    TabsPage,
-    LoginPage,
-    HomePage,
-    SignInPage,
-    SignOutPage
+    AdminLoginPage,
+    RegisterPage,
+    AdminHomePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
+    // AngularFireModule.initializeApp(firebaseConfig),
+    // AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    TabsPage,
-    LoginPage,
-    HomePage,
-    SignInPage,
-    SignOutPage
+    AdminLoginPage,
+    RegisterPage,
+    AdminHomePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AuthService,
+    EmployeesService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
+
 export class AppModule {}
